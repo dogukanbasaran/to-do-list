@@ -1,0 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+
+:root{
+    --bgColor: #00356B;
+    --bgColor2: linear-gradient(160deg, rgb(0, 147, 233, 0.1) 0%, rgb(128, 208, 199, 0.25) 100%);
+    --textColor: #fdfdfd;
+    --borderColor: rgba(255, 255, 255, 0.1);
+    
+}
+
+html{
+    background: var(--bgColor);
+    color: var(--textColor);
+}
+
+main .container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.to-do-list-board{
+    background: var(--bgColor2);
+    height: 500px;
+    width: 500px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 10px 10px 10px #000000;
+    border: 1px solid var(--borderColor);
+}
