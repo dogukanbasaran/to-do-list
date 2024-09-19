@@ -4,19 +4,54 @@ const tasks = document.getElementById("tasks");
 const emptySpan = document.querySelector(".task-list ul > span");
 
 
-
 addButton.addEventListener("click", () => {
    if(taskInput.value != ""){
-    let newListItem = document.createElement("li");
-    newListItem.innerHTML = `${taskInput.value} <button><i class="fa-solid fa-ellipsis-vertical"></i></button>`;
+    const newListItem = document.createElement("li");
+    const div1 = document.createElement("div");
+    newListItem.appendChild(div1);
+    const task = document.createElement("span");
+    task.innerHTML = `${taskInput.value}`;
+    div1.appendChild(task);
+    const liButton = document.createElement("button");
+    div1.appendChild(liButton);
+    liButton.addEventListener("click", () => {
+
+      liButton.disabled = true;
+      liButton.style.cursor = "not-allowed";
+
+      const nli = newListItem.style;
+      nli.height = "80px";
+      nli.padding = "10px";
+      nli.justifyContent = "start";
+
+      const div2 = document.createElement("div");
+      div2.style.justifyContent = "end";
+      newListItem.appendChild(div2);
+
+      const removeBtn = document.createElement("button");
+      removeBtn.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+      div2.appendChild(removeBtn);
+      removeBtn.addEventListener("click", () => {
+         tasks.removeChild(newListItem);
+      });
+
+    })
+    let buttonIcon = document.createElement("i");
+    buttonIcon.innerHTML = `<i class="fa-solid fa-ellipsis-vertical"></i>`;
+    liButton.appendChild(buttonIcon);
+
     tasks.appendChild(newListItem);
     tasks.removeChild(emptySpan);
    }
    else{
     alert("you have to add at least 1 task.")
    }
+
+
 });
 
 addButton.addEventListener("click", () => {
    taskInput.value = "";
 })
+
+

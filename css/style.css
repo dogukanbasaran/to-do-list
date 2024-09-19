@@ -66,20 +66,21 @@ main .container{
     box-shadow: 1px 1px 2px #000000;
 }
 
-.task-list ul{
+#tasks{
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.task-list ul li{
+#tasks li{
    background: #fdfdfd;
    color: #000000;
    height: 40px;
    display: flex;
-   align-items: center;
-   justify-content: space-between;
+   justify-content: center;
+   flex-direction: column;
+   gap: 5px;
    padding: 0 10px;
    font-weight: 600;
    border: 0.5px solid var(--borderColor);
@@ -87,34 +88,24 @@ main .container{
    box-shadow: 1px 1px 2px #000000;
 }
 
-.listItems {
-    background: #fdfdfd;
-    color: #000000;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
-    font-weight: 600;
-    border: 0.5px solid var(--borderColor);
-    border-radius: 2px;
-    box-shadow: 1px 1px 2px #000000;
+#tasks li > div {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
 }
 
-.task-list ul li > button{
+#tasks li > div > button{
     width: 25px;
     cursor: pointer;
-    border: 0.5px solid var(--borderColor);
-    border-radius: 2px;
-    box-shadow: 1px 1px 2px #000000;
 }
 
-.task-list ul > span{
+#tasks > span{
     padding-top: 12vh;
     font-size: 1.5em;
     text-align: center;
     color: rgba(255, 255, 255, 0.1);
 }
+
 
 
 @media only screen and (max-width: 350px) {
