@@ -57,6 +57,16 @@ main .container{
     font-size: 1em;
 }
 
+.task-list input{
+    width: 70%;
+    background: none;
+    outline: none;
+    border: none;
+    color: #000000;
+    font-weight: 600;
+    font-size: 1em;
+}
+
 .task-input button{
     width: 24%;
     height: 40px;

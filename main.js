@@ -36,8 +36,6 @@ addButton.addEventListener("click", () => {
          liButton.style.display = "block";
       })
 
-      // liButton.disabled = true;
-      // liButton.style.cursor = "not-allowed";
    
       const nli = newListItem.style;
       nli.height = "80px";
@@ -45,15 +43,39 @@ addButton.addEventListener("click", () => {
    
       const div2 = document.createElement("div");
       div2.style.justifyContent = "end";
+      div2.style.gap = "5px";
       newListItem.appendChild(div2);
-   
+
+
+      const editBtn = document.createElement("button");
+      editBtn.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
+      div2.appendChild(editBtn);
+
+      const editInput = document.createElement("input");
+
+      editBtn.addEventListener("click", () => {
+         div1.replaceChild(editInput, task);
+         editInput.value = `${task.innerHTML}`;
+         editInput.focus();
+         
+         const saveButton = document.createElement("button");
+         saveButton.innerHTML = `<i class="fa-solid fa-floppy-disk"></i>`;
+         div2.appendChild(saveButton);
+         div2.replaceChild(saveButton, editBtn);
+         saveButton.addEventListener("click", () => {
+            task.innerHTML = editInput.value;
+            div1.replaceChild(task,editInput);
+            div2.replaceChild(editBtn, saveButton);
+         });
+
+      });
+  
       const removeBtn = document.createElement("button");
       removeBtn.innerHTML = `<i class="fa-solid fa-trash"></i>`;
       div2.appendChild(removeBtn);
       removeBtn.addEventListener("click", () => {
          tasks.removeChild(newListItem);
       });
-   
     });
 
     
