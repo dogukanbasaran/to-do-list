@@ -3,6 +3,9 @@ const addButton = document.getElementById("add-btn");
 const tasks = document.getElementById("tasks");
 const emptySpan = document.querySelector(".task-list ul > span");
 
+const demoSpan = document.createElement("span");
+document.body.appendChild(demoSpan);
+
 
 
 
@@ -15,8 +18,9 @@ addButton.addEventListener("click", () => {
     const div1 = document.createElement("div");
     newListItem.appendChild(div1);
 
+    localStorage.setItem("taskName", taskInput.value);
     const task = document.createElement("span");
-    task.innerHTML = `${taskInput.value}`;
+    task.innerHTML = localStorage.getItem("taskName");
     div1.appendChild(task);
 
     const liButton = document.createElement("button");
@@ -54,6 +58,7 @@ addButton.addEventListener("click", () => {
       const editInput = document.createElement("input");
 
       editBtn.addEventListener("click", () => {
+         closeBtn.disabled = true;
          div1.replaceChild(editInput, task);
          editInput.value = `${task.innerHTML}`;
          editInput.focus();
@@ -66,6 +71,7 @@ addButton.addEventListener("click", () => {
             task.innerHTML = editInput.value;
             div1.replaceChild(task,editInput);
             div2.replaceChild(editBtn, saveButton);
+            closeBtn.disabled = false;
          });
 
       });
