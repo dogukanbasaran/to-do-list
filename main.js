@@ -45,6 +45,35 @@ window.onload = () => {
             div2.style.justifyContent = "end";
             div2.style.gap = "5px";
             newListItem.appendChild(div2);
+
+            const editBtn = document.createElement("button");
+            editBtn.innerHTML = `<i class="fa-solid fa-pencil"></i>`;
+            div2.appendChild(editBtn);
+
+            const saveBtn = document.createElement("button");
+            saveBtn.innerHTML = `<i class="fa-solid fa-floppy-disk"></i>`;
+            div2.appendChild(saveBtn);
+            saveBtn.style.display = "none";
+
+            const editInput = document.createElement("input");
+            editInput.placeholder = "type a new task";
+
+            editBtn.addEventListener("click", () => {
+               editBtn.style.display = "none";
+               saveBtn.style.display = "block";
+               closeBtn.disabled = true;
+               div1.replaceChild(editInput, task);
+            });
+
+            saveBtn.addEventListener("click", () => {
+               saveBtn.style.display = "none";
+               editBtn.style.display = "block";
+               closeBtn.disabled = false;
+               localStorage.removeItem(task.textContent);
+               task.textContent = editInput.value;
+               localStorage.setItem(task.textContent, task.textContent);
+               div1.replaceChild(task, editInput);
+            });
       
         
             const removeBtn = document.createElement("button");
@@ -58,10 +87,5 @@ window.onload = () => {
        });
    };
 };
-
-
-
-
-
 
 
