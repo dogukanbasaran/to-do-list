@@ -2,11 +2,24 @@ const taskInput = document.querySelector(".task-input input");
 const addButton = document.getElementById("add-btn");
 const tasks = document.getElementById("tasks");
 const emptySpan = document.querySelector(".task-list ul > span");
+const errorContainer = document.querySelector("#error-container");
 
 addButton.addEventListener("click", () => {
-   localStorage.setItem(taskInput.value, taskInput.value);
-   location.reload();
+   if(taskInput.value != ""){
+      localStorage.setItem(taskInput.value, taskInput.value);
+      location.reload();
+   }
+   else{
+     errorHandler();
+   }
 });
+
+function errorHandler(){
+   errorContainer.style.visibility = "visible";
+   setTimeout(() => {
+      errorContainer.style.visibility = "hidden";
+   }, 2000);
+}
 
 window.onload = () => {
    for(let i = 0;  i < localStorage.length; i++){
@@ -66,13 +79,18 @@ window.onload = () => {
             });
 
             saveBtn.addEventListener("click", () => {
-               saveBtn.style.display = "none";
-               editBtn.style.display = "block";
-               closeBtn.disabled = false;
-               localStorage.removeItem(task.textContent);
-               task.textContent = editInput.value;
-               localStorage.setItem(task.textContent, task.textContent);
-               div1.replaceChild(task, editInput);
+               if(editInput.value != ""){
+                  saveBtn.style.display = "none";
+                  editBtn.style.display = "block";
+                  closeBtn.disabled = false;
+                  localStorage.removeItem(task.textContent);
+                  task.textContent = editInput.value;
+                  localStorage.setItem(task.textContent, task.textContent);
+                  div1.replaceChild(task, editInput);
+               }
+               else{
+                  errorHandler();
+               }
             });
       
         
