@@ -18,20 +18,31 @@ html{
     color: var(--textColor);
 }
 
-main .container{
+main{
     height: 90vh;
+}
+
+main .container{
+    height: 90%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     padding: 0 20px;
     gap: 20px;
 }
 
-#error-container{
-    background-color: red;
+#errorMessage{
+    height: 10%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+#errorMessage .container{
+    visibility: hidden;
     height: 40px;
-    width: 450px;
     border-radius: 3px;
     background-color: #fdfdfd;
     color: #000000;
@@ -40,15 +51,14 @@ main .container{
     justify-content: center;
     gap: 10px;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     box-shadow: 2px 2px 2px #000000;
     border: 1px solid var(--borderColor);
-    visibility: hidden;
     transition: ease-in 2s;
     cursor: pointer;
 }
 
-#error-container i{
+#errorMessage .container i{
     color: red;
     font-size: 20px;
 }
@@ -128,6 +138,7 @@ main .container{
 #tasks li > div {
    width: 100%;
    display: flex;
+   align-items: center;
    justify-content: space-between;
 }
 
@@ -172,5 +183,47 @@ footer .container{
 @media only screen and (min-width: 376px) and (max-width: 450px) {
     html{
         font-size: 0.80em;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    #errorMessage{
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 450px){
+    .task-input button{
+        height: 30px;
+    }
+
+    .task-input input{
+        height: 30px;
+    }
+
+    #tasks li{
+        background: #fdfdfd;
+        color: #000000;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+        padding: 0 10px;
+        font-weight: 600;
+        border: 0.5px solid var(--borderColor);
+        border-radius: 2px;
+        box-shadow: 1px 1px 2px #000000;
+     }
+
+     #tasks li > div > button{
+        width: 22.5px;
+        height: 22.5px;
+        cursor: pointer;
+    }
+
+    #errorMessage .container{
+        font-size: 11px;
     }
 }

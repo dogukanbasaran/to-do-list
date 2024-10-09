@@ -2,7 +2,7 @@ const taskInput = document.querySelector(".task-input input");
 const addButton = document.getElementById("add-btn");
 const tasks = document.getElementById("tasks");
 const emptySpan = document.querySelector(".task-list ul > span");
-const errorContainer = document.querySelector("#error-container");
+const errorContainer = document.querySelector("#errorMessage .container");
 
 addButton.addEventListener("click", () => {
    if(taskInput.value != ""){
@@ -18,7 +18,7 @@ function errorHandler(){
    errorContainer.style.visibility = "visible";
    setTimeout(() => {
       errorContainer.style.visibility = "hidden";
-   }, 2000);
+   }, 1000);
 }
 
 window.onload = () => {
