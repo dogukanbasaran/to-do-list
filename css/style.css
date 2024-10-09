@@ -145,6 +145,7 @@ main .container{
    width: 100%;
    display: flex;
    align-items: center;
+   gap: 5px;
    justify-content: space-between;
 }
 
@@ -170,6 +171,7 @@ footer .container{
     align-items: center;
     font-weight: 600;
     letter-spacing: 2px;
+    border: var(--borderColor) solid 1px;
 }
 
 
